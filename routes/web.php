@@ -110,7 +110,7 @@ Route::middleware(['auth', 'role:keuangan'])->group(function () {
     Route::delete('/keuangan/rejected/delete/{id}', [KeuanganDashboard::class, 'destroyRejected']);
 
     Route::post('/keuangan/rejected/bulk-restore', [KeuanganDashboard::class, 'bulkRestore']);
-    Route::delete('/keuangan/rejected/bulk-delete', [KeuanganDashboard::class, 'bulkDelete']);
+    Route::delete('/keuangan/rejected/bulk-delete', [KeuanganDashboard::class, 'bulkDeleteRejected']);
 
     Route::delete('/keuangan/pembukuan/bulk-delete', [KeuanganDashboard::class, 'bulkDeletePembukuan'])->name('pembukuan.bulk.delete');
 

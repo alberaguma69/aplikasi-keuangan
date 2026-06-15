@@ -614,17 +614,48 @@ class DashboardController extends Controller
     /**
      * HAPUS PENGAJUAN YANG DITOLAK
      */
-public function bulkDeleteRejected(Request $request)
-{
-    if (!$request->has('ids') || empty($request->ids)) {
+    public function bulkDeleteRejected(Request $request)
+    {
+        if (!$request->has('ids') || empty($request->ids)) {
 
-        return back()->with('error', 'Pilih data yang ingin dihapus');
+            return back()->with('error', 'Pilih data yang ingin dihapus');
 
+        }
+
+        $data = Pengajuan::whereIn('id', $request->ids)->get();
+
+        foreach ($data as $pengajuan) {
+
+            if ($pengajuan->berkas) {
+
+                $file = public_path('berkas/' . $pengajuan->berkas);
+
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            if ($pengajuan->dokumen_jurnal) {
+
+                $file = public_path('jurnal/' . $pengajuan->dokumen_jurnal);
+
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            if ($pengajuan->dokumen_jurnal_baru) {
+
+                $file = public_path('jurnal/' . $pengajuan->dokumen_jurnal_baru);
+
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            }
+        }
+
+        Pengajuan::whereIn('id', $request->ids)->delete();
+
+        return back()->with('success', 'Data dan file berhasil dihapus');
     }
-
-    Pengajuan::whereIn('id', $request->ids)->delete();
-
-    return back()->with('success', 'Data berhasil dihapus');
-}
-
 }
