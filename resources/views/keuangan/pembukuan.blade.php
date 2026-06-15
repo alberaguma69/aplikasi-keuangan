@@ -540,21 +540,21 @@
 
                 @empty
 
-                    <tr>
+                <tr>
 
-                        <td colspan="7" class="text-center py-16">
+                    <td colspan="7" class="text-center py-16">
 
-                            <h1 class="text-xl font-bold text-gray-700 mb-2">
-                                Belum Ada Data Pembukuan
-                            </h1>
+                        <h1 class="text-xl font-bold text-gray-700 mb-2">
+                            Belum Ada Data Pembukuan
+                        </h1>
 
-                            <p class="text-gray-400">
-                                Data transaksi akan muncul di sini
-                            </p>
+                        <p class="text-gray-400">
+                            Data transaksi akan muncul di sini
+                        </p>
 
-                        </td>
+                    </td>
 
-                    </tr>
+                </tr>
 
                 @endforelse
 
