@@ -616,6 +616,12 @@ class DashboardController extends Controller
      */
     public function bulkDeleteRejected(Request $request)
     {
+        if (!$request->has('ids') || empty($request->ids)) {
+
+            return back()->with('error', 'Pilih data yang ingin dihapus');
+
+        }
+
         $data = Pengajuan::whereIn('id', $request->ids)->get();
 
         foreach ($data as $pengajuan) {
