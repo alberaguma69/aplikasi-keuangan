@@ -541,19 +541,23 @@
                 @empty
 
                 <tr>
+                    <td colspan="9">
+                        <div class="flex flex-col items-center justify-center py-20">
 
-                    <td colspan="7" class="text-center py-16">
+                            <div class="text-5xl mb-4">
+                                📒
+                            </div>
 
-                        <h1 class="text-xl font-bold text-gray-700 mb-2">
-                            Belum Ada Data Pembukuan
-                        </h1>
+                            <h1 class="text-xl font-bold text-gray-700 mb-2">
+                                Belum Ada Data Pembukuan
+                            </h1>
 
-                        <p class="text-gray-400">
-                            Data transaksi akan muncul di sini
-                        </p>
+                            <p class="text-gray-400">
+                                Data transaksi akan muncul di sini
+                            </p>
 
+                        </div>
                     </td>
-
                 </tr>
 
                 @endforelse
