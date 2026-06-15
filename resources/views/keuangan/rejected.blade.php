@@ -350,15 +350,13 @@
 
                 @empty
 
-                    <tr>
-
-                        <td colspan="5" class="text-center py-10 text-gray-400">
-
+                <tr>
+                    <td colspan="9">
+                        <div class="flex justify-center items-center py-16 text-gray-400">
                             Tidak ada data rejected
-
-                        </td>
-
-                    </tr>
+                        </div>
+                    </td>
+                </tr>
 
                 @endforelse
 
