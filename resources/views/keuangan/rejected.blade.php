@@ -185,8 +185,7 @@
 
                         <input
                             type="checkbox"
-                            name="ids[]"
-                            value="{{ $pengajuan->id }}">
+                            @change="toggleAll($event)">
 
                     </th>
 
