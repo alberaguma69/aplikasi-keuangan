@@ -26,10 +26,11 @@
 <!-- FILTER -->
 <div class="bg-white rounded-3xl p-6 border border-gray-100 mb-6">
 
-    <form method="GET" action="/keuangan/pembukuan">
+    <form method="GET" action="/keuangan/rejected">
 
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
 
+            <!-- JUDUL -->
             <div>
 
                 <h2 class="text-lg font-bold text-gray-800">
@@ -37,13 +38,16 @@
                 </h2>
 
                 <p class="text-sm text-gray-400">
-                    Cari transaksi berdasarkan kode transaksi, nama, kategori, keterangan, tanggal dan waktu
+                    Cari transaksi berdasarkan kode transaksi, nama,
+                    kategori, keterangan, tanggal dan waktu
                 </p>
 
             </div>
 
-            <div class="flex flex-wrap items-center gap-3">
+            <!-- FILTER FORM -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full lg:w-auto">
 
+                <!-- SEARCH -->
                 <div class="relative">
 
                     <input
@@ -51,28 +55,30 @@
                         name="search"
                         value="{{ request('search') }}"
                         placeholder="Pencarian"
-                        class="border border-gray-200 rounded-2xl pl-10 pr-4 py-3 w-56">
+                        class="w-full border border-gray-200 rounded-2xl pl-10 pr-4 py-3">
 
-                    <span class="absolute left-4 top-3.5 text-gray-400">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                         🔍
                     </span>
 
                 </div>
 
+                <!-- DARI -->
                 <input
                     type="datetime-local"
                     name="dari"
                     value="{{ request('dari') }}"
                     onchange="this.form.submit()"
-                    class="border border-gray-200 rounded-2xl px-4 py-3">
+                    class="w-full border border-gray-200 rounded-2xl px-4 py-3">
 
+                <!-- SAMPAI -->
                 <input
                     type="datetime-local"
                     name="sampai"
                     value="{{ request('sampai') }}"
                     onchange="this.form.submit()"
-                    class="border border-gray-200 rounded-2xl px-4 py-3">
-                    
+                    class="w-full border border-gray-200 rounded-2xl px-4 py-3">
+
             </div>
 
         </div>

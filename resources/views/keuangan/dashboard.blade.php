@@ -81,7 +81,7 @@
 
         <form method="GET" action="/keuangan/dashboard">
 
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
 
                 <div>
 
@@ -95,7 +95,7 @@
 
                 </div>
 
-                <div class="flex flex-wrap items-center gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full lg:w-auto">
 
                     <div class="relative">
 
@@ -104,7 +104,7 @@
                             name="search"
                             value="{{ request('search') }}"
                             placeholder="Pencarian"
-                            class="border border-gray-200 rounded-2xl pl-10 pr-4 py-3 w-56">
+                            class="w-full border border-gray-200 rounded-2xl pl-10 pr-4 py-3">
 
                         <span class="absolute left-4 top-3.5 text-gray-400">
                             🔍
@@ -117,14 +117,14 @@
                         name="dari"
                         value="{{ request('dari') }}"
                         onchange="this.form.submit()"
-                        class="border border-gray-200 rounded-2xl px-4 py-3">
+                        class="w-full border border-gray-200 rounded-2xl px-4 py-3">
 
                     <input
                         type="datetime-local"
                         name="sampai"
                         value="{{ request('sampai') }}"
                         onchange="this.form.submit()"
-                        class="border border-gray-200 rounded-2xl px-4 py-3">
+                        class="w-full border border-gray-200 rounded-2xl px-4 py-3">
                         
                 </div>
 

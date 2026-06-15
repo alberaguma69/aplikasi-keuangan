@@ -17,7 +17,7 @@
                 KELOLA USER
             </h1>
 
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-gray-500 text-sm mt-2">
                 Kelola data pengguna sistem
             </p>
 
@@ -26,16 +26,15 @@
         <!-- RIGHT -->
         <div class="flex items-center gap-4">
 
-            <!-- BUTTON TAMBAH USER -->
+            <!-- BUTTON -->
             <button
                 @click="openCreate = true"
-                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-2xl font-semibold transition">
+                class="bg-indigo-700 hover:bg-indigo-800 transition text-white px-5 py-3 rounded-2xl text-sm font-semibold">
 
-                + Tambah User
+                + User
 
             </button>
 
-            <!-- TOPBAR -->
             @include('keuangan.includes.topbar')
 
         </div>
@@ -184,7 +183,7 @@
     {{-- Filter Data --}}
     <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 mb-6">
 
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 
             <div>
 
@@ -198,7 +197,7 @@
 
             </div>
 
-            <form method="GET">
+            <form method="GET" class="w-full lg:w-auto">
 
                 <div class="relative">
 
@@ -208,7 +207,7 @@
                         value="{{ request('search') }}"
                         placeholder="Pencarian"
                         onchange="this.form.submit()"
-                        class="w-80 border border-gray-200 rounded-2xl pl-12 pr-4 py-4">
+                        class="w-full lg:w-80 border border-gray-200 rounded-2xl pl-12 pr-4 py-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
 
                     <span class="absolute left-4 top-1/2 -translate-y-1/2">
                         🔍
@@ -221,7 +220,6 @@
         </div>
 
     </div>
-
 
 <!-- TABLE -->
 <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden">

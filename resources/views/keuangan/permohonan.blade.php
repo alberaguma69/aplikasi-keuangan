@@ -26,7 +26,7 @@
 <!-- FILTER DATA -->
 <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 mb-6">
 
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 
         <div>
 
@@ -40,7 +40,7 @@
 
         </div>
 
-        <form method="GET">
+        <form method="GET" class="w-full lg:w-auto">
 
             <div class="relative">
 
@@ -50,7 +50,7 @@
                     value="{{ request('search') }}"
                     placeholder="Pencarian"
                     onchange="this.form.submit()"
-                    class="w-80 border border-gray-200 rounded-2xl pl-12 pr-4 py-4 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    class="w-full lg:w-80 border border-gray-200 rounded-2xl pl-12 pr-4 py-4 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
 
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-lg">
                     🔍
