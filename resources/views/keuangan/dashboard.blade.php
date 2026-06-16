@@ -136,126 +136,180 @@
 
     @forelse($pengajuans as $pengajuan)
 
-        <!-- CARD -->
-        <div class="bg-white rounded-3xl px-5 py-4 border border-gray-100 hover:shadow-lg transition">
+    <div class="bg-white rounded-3xl border border-gray-200 p-6 hover:shadow-lg transition">
 
-            <div class="flex items-center justify-between gap-6">
+        <div class="flex items-center justify-between gap-8">
 
-                <!-- LEFT -->
-                <div class="flex-1">
+            <!-- INFO -->
+            <div class="w-44 shrink-0">
 
-                    <!-- TOP -->
-                    <div class="flex items-center gap-3 mb-2">
+                <div class="flex flex-wrap items-center gap-2 mb-3">
 
-                        <span class="bg-black text-white text-[10px] px-3 py-1 rounded-full">
+                    <span class="bg-[#101827] text-white text-[10px] px-3 py-1 rounded-full font-bold">
+                        FL-{{ str_pad($pengajuan->id, 3, '0', STR_PAD_LEFT) }}
+                    </span>
 
-                            FL{{ str_pad($pengajuan->id, 4, '0', STR_PAD_LEFT) }}
+                    @if($pengajuan->kategori == 'Reimburse/Claim')
 
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            REIMBURSE / CLAIM
                         </span>
 
-                        <!-- JADWAL PENGAJUAN-->
-                        <p class="text-gray-400 text-xs">
+                    @elseif($pengajuan->kategori == 'Hutang Supplier')
 
-                            {{ \Carbon\Carbon::parse($pengajuan->tanggal_pengajuan)->format('d M Y H:i') }}
-
-                        </p>
-
-                        <!-- KATEGORI -->
-                        @if($pengajuan->kategori == 'Reimburse/Claim')
-
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                REIMBURSE/CLAIM
-                            </span>
-
-                        @elseif($pengajuan->kategori == 'Hutang Supplier')
-
-                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                HUTANG SUPPLIER
-                            </span>
-
-                        @elseif($pengajuan->kategori == 'Uang Muka')
-
-                            <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                UANG MUKA
-                            </span>
-
-                        @elseif($pengajuan->kategori == 'Deklarasi Uang Muka')
-
-                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                DEKLARASI UANG MUKA
-                            </span>
-
-                        @endif
-
-                    </div>
-
-                    <!-- NOMINAL -->
-                    <h1 class="text-xl font-extrabold text-gray-900 mb-1">
-
-                        RP {{ number_format($pengajuan->nominal, 0, ',', '.') }}
-
-                    </h1>
-
-                    <!-- NAME -->
-                    <p class="text-sm font-semibold text-gray-700">
-
-                        {{ $pengajuan->dibayarkan }}
-
-                    </p>
-
-                    <!-- DESC -->
-                    <p class="text-xs text-gray-400 uppercase mt-1 line-clamp-1">
-
-                        {{ $pengajuan->keterangan }}
-
-                    </p>
-
-                </div>
-
-                <!-- RIGHT -->
-                <div class="flex flex-col items-end gap-2">
-
-                    <!-- STATUS -->
-                    @if($pengajuan->status == 'done')
-
-                        <span class="text-green-600 font-bold text-xs">
-                            DONE
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            HUTANG SUPPLIER
                         </span>
 
-                    @elseif($pengajuan->status == 'approve_and_process')
+                    @elseif($pengajuan->kategori == 'Uang Muka')
 
-                        <span class="text-blue-600 font-bold text-xs">
-                            APPROVE & PROCESS
+                        <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            UANG MUKA
                         </span>
 
-                    @elseif($pengajuan->status == 'rejected')
+                    @elseif($pengajuan->kategori == 'Deklarasi Uang Muka')
 
-                        <span class="text-red-500 font-bold text-xs">
-                            REJECTED
-                        </span>
-
-                    @else
-
-                        <span class="text-yellow-500 font-bold text-xs">
-                            PENDING
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            DEKLARASI UANG MUKA
                         </span>
 
                     @endif
 
-                    <!-- FILE -->
-                    <a href="{{ asset('berkas/' . $pengajuan->berkas) }}"
-                       target="_blank"
-                       class="border border-gray-300 px-4 py-2 rounded-xl text-xs font-semibold hover:bg-gray-100 transition">
+                </div>
 
-                        📄 Berkas
+                <p class="text-[10px] text-gray-400 uppercase font-semibold">
+                    Tanggal Pengajuan
+                </p>
 
-                    </a>
+                <p class="text-sm font-semibold text-gray-700 mt-1">
+                    {{ \Carbon\Carbon::parse($pengajuan->tanggal_pengajuan)->format('d M Y H:i') }}
+                </p>
+
+            </div>
+
+            <!-- DIBAYARKAN -->
+            <div class="flex items-center gap-3 w-52 shrink-0">
+
+                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    👤
+                </div>
+
+                <div>
+
+                    <p class="text-[10px] text-gray-400 uppercase font-semibold">
+                        Dibayarkan Kepada
+                    </p>
+
+                    <h3 class="font-bold text-lg text-gray-900">
+                        {{ $pengajuan->dibayarkan }}
+                    </h3>
 
                 </div>
 
             </div>
 
+            <!-- KETERANGAN -->
+            <div>
+
+                <p class="text-[10px] text-gray-400 uppercase font-semibold mb-1">
+                    Keterangan
+                </p>
+
+                <p class="text-base text-gray-700">
+                    {{ $pengajuan->keterangan }}
+                </p>
+
+            </div>
+
+            <!-- NOMINAL -->
+            <div>
+
+                @if($pengajuan->kategori == 'Deklarasi Uang Muka')
+
+                    <div class="space-y-2">
+
+                        <div>
+
+                            <p class="text-[10px] text-gray-400 uppercase font-semibold">
+                                Uang Muka Awal
+                            </p>
+
+                            <p class="text-sm font-bold text-gray-800">
+                                Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <p class="text-[10px] text-purple-500 uppercase font-semibold">
+                                Nominal Deklarasi
+                            </p>
+
+                            <p class="text-lg font-bold text-purple-600">
+                                Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                @else
+
+                    <p class="text-[10px] text-gray-400 uppercase font-semibold mb-1">
+                        Nominal
+                    </p>
+
+                    <p class="text-xl font-bold text-indigo-600">
+                        Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                    </p>
+
+                @endif
+
+            </div>
+
+            <!-- STATUS -->
+            <div class="w-36 flex flex-col gap-5">
+
+                @if($pengajuan->status == 'done')
+
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold w-fit">
+                        DONE
+                    </span>
+
+                @elseif($pengajuan->status == 'approve_and_process')
+
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold w-fit">
+                        APPROVE & PROCESS
+                    </span>
+
+                @elseif($pengajuan->status == 'rejected')
+
+                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold w-fit">
+                        REJECTED
+                    </span>
+
+                @else
+
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold w-fit">
+                        PENDING
+                    </span>
+
+                @endif
+
+                <a href="{{ asset('berkas/' . $pengajuan->berkas) }}"
+                target="_blank"
+                class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+
+                    📎 Lihat Berkas
+
+                </a>
+
+            </div>
+
         </div>
+
+    </div>
 
     @empty
 

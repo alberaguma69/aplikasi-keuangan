@@ -194,6 +194,10 @@
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                        Uang Muka Awal
+                    </th>
+
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
                         Nominal
                     </th>
 
@@ -301,6 +305,7 @@
                                 <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
                                     Hutang Supplier
                                 </span>
+                            
 
                             @elseif($pengajuan->kategori == 'Uang Muka')
 
@@ -308,7 +313,9 @@
                                     Uang Muka
                                 </span>
 
-                            @elseif($pengajuan->kategori == 'Deklarasi Uang Muka')
+                            @elseif(
+                                $pengajuan->kategori == 'Deklarasi Uang Muka'
+                            )
 
                                 <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold">
                                     Deklarasi Uang Muka
@@ -323,6 +330,15 @@
 
                             {{ $pengajuan->dibayarkan }}
 
+                        </td>
+
+                        <!-- UANG MUKA -->
+                        <td>
+                        @if($pengajuan->kategori == 'Deklarasi Uang Muka')
+                            Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                        @else
+                            -
+                        @endif
                         </td>
 
                         <!-- NOMINAL -->

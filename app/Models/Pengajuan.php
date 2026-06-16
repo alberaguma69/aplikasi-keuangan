@@ -12,6 +12,7 @@ class Pengajuan extends Model
             'dibayarkan',
             'keterangan',
             'nominal',
+            'uang_muka_awal',
             'tanggal_pengajuan',
             'berkas',
             'dokumen_jurnal',

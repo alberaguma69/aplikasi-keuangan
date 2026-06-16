@@ -69,189 +69,146 @@
 
     @forelse($pengajuans as $pengajuan)
 
-        <div class="bg-white rounded-3xl border border-gray-200 px-6 py-5 hover:shadow-md transition">
+        <div class="bg-white rounded-3xl border border-gray-200 p-6 hover:shadow-lg transition">
 
-            <div class="flex items-center justify-between gap-4">
+            <!-- HEADER -->
+            <div class="flex items-center justify-between mb-6">
 
-                <!-- LEFT -->
-                <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-3">
 
-                    <div class="flex items-center gap-3 mb-2">
+                    <span class="bg-[#101827] text-white text-[10px] px-3 py-1 rounded-full font-bold">
+                        FL-{{ str_pad($pengajuan->id, 3, '0', STR_PAD_LEFT) }}
+                    </span>
 
-                        <!-- ID -->
-                        <span class="bg-[#101827] text-white text-[10px] px-3 py-1 rounded-full font-bold">
+                    @if($pengajuan->kategori == 'Reimburse/Claim')
 
-                            FL-{{ str_pad($pengajuan->id, 3, '0', STR_PAD_LEFT) }}
-
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            REIMBURSE / CLAIM
                         </span>
-                        
-                        <!-- KATEGORI -->
-                        @if($pengajuan->kategori == 'Reimburse/Claim')
 
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                REIMBURSE/CLAIM
-                            </span>
+                    @elseif($pengajuan->kategori == 'Hutang Supplier')
 
-                        @elseif($pengajuan->kategori == 'Hutang Supplier')
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            HUTANG SUPPLIER
+                        </span>
 
-                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                HUTANG SUPPLIER
-                            </span>
+                    @elseif($pengajuan->kategori == 'Deklarasi Uang Muka')
 
-                        @elseif($pengajuan->kategori == 'Uang Muka')
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold">
+                            DEKLARASI UANG MUKA
+                        </span>
 
-                            <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                UANG MUKA
-                            </span>
-
-                        @elseif($pengajuan->kategori == 'Deklarasi Uang Muka')
-
-                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold">
-                                DEKLARASI UANG MUKA
-                            </span>
-
-                        @endif
-
-                    </div>
-
-                    <!-- DIBAYARKAN -->
-                    <h2 class="font-bold text-lg text-gray-800 truncate">
-
-                        {{ strtoupper($pengajuan->dibayarkan) }}
-
-                    </h2>
-
-                    <!-- KETERANGAN -->
-                    <p class="text-gray-400 text-sm font-semibold truncate">
-
-                        {{ strtoupper($pengajuan->keterangan) }}
-
-                    </p>
-
-                    <div class="flex items-center gap-4 mt-3">
-
-                        <!-- NOMINAL -->
-                        <h1 class="text-2xl font-extrabold text-blue-600">
-
-                            Rp {{ number_format($pengajuan->nominal, 0, ',', '.') }}
-
-                        </h1>
-
-                        <!-- BERKAS -->
-                        <a href="{{ asset('berkas/' . $pengajuan->berkas) }}"
-                           target="_blank"
-                           class="text-gray-400 text-sm font-bold hover:text-blue-600">
-
-                            📎 BERKAS
-
-                        </a>
-
-                    </div>
+                    @endif
 
                 </div>
 
-                <!-- RIGHT -->
-                <div>
+                <!-- UPDATE -->
+                <div x-data="{ open: false }">
 
-                    <div x-data="{ open: false }">
+                    <!-- BUTTON -->
+                    <button
+                        type="button"
+                        @click="open = true"
+                        class="bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-bold px-5 py-2 rounded-xl transition text-sm">
 
-                        <button
-                            @click="open = true"
-                            class="bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-bold px-5 py-2 rounded-xl transition text-sm">
+                        UPDATE
 
-                            UPDATE
+                    </button>
 
-                        </button>
+                    <!-- MODAL -->
+                    <div
+                        x-show="open"
+                        class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
 
-                        <!-- MODAL -->
+                        <!-- CARD -->
                         <div
-                            x-show="open"
-                            x-cloak
-                            class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                            @click.away="open = false"
+                            class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl">
 
-                            <div
-                                @click.away="open = false"
-                                class="bg-white rounded-3xl p-6 w-full max-w-sm shadow-2xl">
+                            <!-- HEADER -->
+                            <div class="flex items-center justify-between mb-6">
 
-                                <!-- HEADER -->
-                                <div class="flex items-center gap-3 mb-5">
+                                <div>
 
-                                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 flex items-center justify-center text-xl">
+                                    <h2 class="text-xl font-bold text-gray-900">
+                                        Update Status
+                                    </h2>
 
-                                        ✏️
-
-                                    </div>
-
-                                    <div>
-
-                                        <h2 class="text-xl font-bold text-gray-900">
-                                            Update Status
-                                        </h2>
-
-                                        <p class="text-sm text-gray-400">
-                                            FL-{{ str_pad($pengajuan->id, 3, '0', STR_PAD_LEFT) }}
-                                            •
-                                            {{ strtoupper($pengajuan->dibayarkan) }}
-                                        </p>
-
-                                    </div>
+                                    <p class="text-sm text-gray-400">
+                                        FL{{ str_pad($pengajuan->id, 4, '0', STR_PAD_LEFT) }}
+                                    </p>
 
                                 </div>
 
-                                <form action="/keuangan/update-status/{{ $pengajuan->id }}"
-                                    method="POST" x-data="{ status:'' }">
+                                <button
+                                    type="button"
+                                    @click="open = false"
+                                    class="text-gray-400 hover:text-gray-600 text-xl">
 
-                                    @csrf
-                                    
-                                    <!-- STATUS -->
-                                    <div class="mb-6">
+                                    ✕
 
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            Status
-                                        </label>
+                                </button>
 
-                                            
-                                        <div class="relative">
+                            </div>
 
-                                            <select
-                                                x-model="status"
-                                                name="status"
-                                                class="w-full border border-gray-300 rounded-2xl px-5 py-4 pr-12 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <!-- FORM -->
+                            <form
+                                action="/keuangan/update-status/{{ $pengajuan->id }}"
+                                method="POST"
+                                x-data="{ status:'' }">
 
-                                                <option value="">Pilih Status</option>
-                                                <option value="pending">Pending</option>
-                                                <option value="approve_and_process">Approve & Process</option>
-                                                <option value="done">Done</option>
-                                                <option value="rejected">Rejected</option>
+                                @csrf
 
-                                            </select>
+                                <!-- STATUS -->
+                                <div class="mb-5">
 
-                                            <!-- PANAH -->
-                                            <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Status
+                                    </label>
 
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="w-5 h-5 text-gray-500"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor">
+                                    <div class="relative">
 
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M19 9l-7 7-7-7" />
+                                        <select
+                                            x-model="status"
+                                            name="status"
+                                            class="w-full appearance-none border border-gray-300 rounded-2xl px-4 py-3 pr-12 bg-white">
 
-                                                </svg>
+                                            <option value="">Pilih Status</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="approve_and_process">Approve & Process</option>
+                                            <option value="rejected">Rejected</option>
 
-                                            </div>
+                                        </select>
+
+                                        <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="w-4 h-4 text-gray-500"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor">
+
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"/>
+
+                                            </svg>
 
                                         </div>
 
                                     </div>
 
-                                    <!-- APPROVE FIELDS -->
-                                    <div x-show="status === 'approve_and_process'" x-transition class="mb-6">
+                                </div>
+
+                                <!-- APPROVE -->
+                                <div
+                                    x-show="status === 'approve_and_process'"
+                                    x-transition
+                                    class="space-y-4 mb-5">
+
+                                    <div>
 
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">
                                             Jadwal Pencairan
@@ -260,7 +217,11 @@
                                         <input
                                             type="datetime-local"
                                             name="jadwal_pencairan"
-                                            class="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4">
+                                            class="w-full border border-gray-300 rounded-2xl px-4 py-3">
+
+                                    </div>
+
+                                    <div>
 
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">
                                             Nomor Jurnal
@@ -270,54 +231,170 @@
                                             type="text"
                                             name="nomor_jurnal"
                                             placeholder="JRN000001"
-                                            class="w-full border border-gray-300 rounded-xl px-4 py-3">
+                                            class="w-full border border-gray-300 rounded-2xl px-4 py-3">
 
                                     </div>
 
-                                    <!-- REJECT FIELDS -->
-                                    <div x-show="status === 'rejected'" x-transition class="mb-6">
+                                </div>
 
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            Alasan Ditolak
-                                        </label>
+                                <!-- REJECT -->
+                                <div
+                                    x-show="status === 'rejected'"
+                                    x-transition
+                                    class="mb-5">
 
-                                        <textarea
-                                            name="alasan_reject"
-                                            rows="4"
-                                            placeholder="Masukkan alasan penolakan..."
-                                            class="w-full border border-gray-300 rounded-xl px-4 py-3"></textarea>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Alasan Penolakan
+                                    </label>
 
-                                    </div>
+                                    <textarea
+                                        name="alasan_reject"
+                                        rows="4"
+                                        class="w-full border border-gray-300 rounded-2xl px-4 py-3"
+                                        placeholder="Masukkan alasan penolakan"></textarea>
 
-                                    <!-- BUTTON -->
-                                    <div class="flex justify-end gap-3">
+                                </div>
 
-                                        <button
-                                            type="button"
-                                            @click="open = false"
-                                            class="px-5 py-3 rounded-2xl bg-gray-100 hover:bg-gray-200 font-semibold transition">
+                                <!-- FOOTER -->
+                                <div class="flex justify-end gap-3">
 
-                                            Batal
+                                    <button
+                                        type="button"
+                                        @click="open = false"
+                                        class="px-5 py-3 rounded-2xl bg-gray-100 hover:bg-gray-200 font-semibold">
 
-                                        </button>
+                                        Batal
 
-                                        <button
-                                            type="submit"
-                                            class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition">
+                                    </button>
 
-                                            Simpan
+                                    <button
+                                        type="submit"
+                                        class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold">
 
-                                        </button>
+                                        Simpan
 
-                                    </div>
+                                    </button>
 
-                                </form>
+                                </div>
 
-                            </div>
+                            </form>
 
                         </div>
 
                     </div>
+
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+
+                <!-- PEMOHON -->
+                <div>
+
+                    <p class="text-xs font-bold text-gray-400 uppercase mb-3">
+                        Pemohon
+                    </p>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg text-gray-900">
+                                {{ strtoupper($pengajuan->dibayarkan) }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- KETERANGAN -->
+                <div>
+
+                    <p class="text-xs font-bold text-gray-400 uppercase mb-3">
+                        Keterangan
+                    </p>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-2xl">
+                            📄
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-medium text-sm text-gray-700 leading-relaxed">
+                                {{ $pengajuan->keterangan }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- NOMINAL -->
+                <div>
+
+                    @if($pengajuan->kategori == 'Deklarasi Uang Muka')
+
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-2">
+                            Uang Muka Awal
+                        </p>
+
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">
+                            Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                        </h3>
+
+                        <p class="text-xs font-bold text-purple-500 uppercase mb-2">
+                            Nominal Deklarasi
+                        </p>
+
+                        <h2 class="text-3xl font-extrabold text-purple-600">
+                            Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                        </h2>
+
+                    @else
+
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-2">
+                            Nominal
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-600">
+                            Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                        </h2>
+
+                    @endif
+
+                </div>
+
+                <!-- BERKAS -->
+                <div>
+
+                    <p class="text-[11px] font-semibold text-gray-400 uppercase mb-2 tracking-wide">
+                        Dokumen
+                    </p>
+
+                    <a href="{{ asset('berkas/' . $pengajuan->berkas) }}"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-2 rounded-xl transition">
+
+                        <span class="text-sm">
+                            📎
+                        </span>
+
+                        <span class="text-xs font-semibold text-gray-700">
+                            Lihat Berkas
+                        </span>
+
+                    </a>
 
                 </div>
 

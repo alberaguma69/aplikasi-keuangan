@@ -184,41 +184,137 @@
 
         </div>
 
-        <!-- NOMINAL -->
-        <h1 class="text-3xl font-extrabold text-gray-900 mb-3">
-            RP {{ number_format($pengajuan->nominal, 0, ',', '.') }}
-        </h1>
+        <!-- DETAIL PENGAJUAN -->
 
-        <!-- DESC -->
-        <div class="min-h-[70px]">
+        @if($pengajuan->kategori == 'Deklarasi Uang Muka')
 
-            <p class="text-gray-700 uppercase font-medium text-sm leading-relaxed">
+            <div class="grid grid-cols-2 gap-3 mt-4">
 
-                {{ $pengajuan->keterangan }}
+                <div class="bg-gray-50 rounded-2xl p-4">
 
-                @if($pengajuan->status == 'rejected' && $pengajuan->alasan_reject)
+                    <p class="text-xs text-gray-500">
+                        Uang Muka Awal
+                    </p>
 
-                <div class="mt-6">
-
-                    <div class="bg-red-50 border border-red-200 rounded-2xl p-4">
-
-                        <p class="text-xs font-bold text-red-600 uppercase mb-2">
-                            Alasan Penolakan
-                        </p>
-
-                        <p class="text-sm text-red-700 leading-relaxed">
-                            {{ $pengajuan->alasan_reject }}
-                        </p>
-
-                    </div>
+                    <p class="text-xl font-bold text-gray-800 mt-1">
+                        Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                    </p>
 
                 </div>
 
-            @endif
+                <div class="bg-indigo-50 rounded-2xl p-4">
 
-            </p>
+                    <p class="text-xs text-indigo-500">
+                        Nominal Realisasi
+                    </p>
+
+                    <p class="text-xl font-bold text-indigo-700 mt-1">
+                        Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        @else
+
+            <!-- NOMINAL -->
+            <div class="mt-4">
+
+                <div class="bg-indigo-50 rounded-2xl p-4">
+
+                    <p class="text-xs text-indigo-500 mb-2">
+                        Nominal Pengajuan
+                    </p>
+
+                    <h2 class="text-xl font-bold text-indigo-700">
+                        Rp {{ number_format($pengajuan->nominal,0,',','.') }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        @endif
+
+        <!-- DIBAYARKAN -->
+        <div class="mt-3">
+
+            <div class="bg-gray-50 rounded-2xl p-4 flex items-center gap-4">
+
+                <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-xl">
+                    👤
+                </div>
+
+                <div>
+
+                    <p class="text-xs text-gray-500 uppercase">
+                        Dibayarkan Kepada
+                    </p>
+
+                    <p class="font-semibold text-gray-800">
+                        {{ $pengajuan->dibayarkan }}
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
+
+        <!-- KETERANGAN -->
+        <div class="mt-3">
+
+            <div class="bg-gray-50 rounded-2xl p-4 flex items-start gap-4">
+
+                <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-xl">
+                    📄
+                </div>
+
+                <div>
+
+                    <p class="text-xs text-gray-500 uppercase">
+                        Keterangan
+                    </p>
+
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        {{ $pengajuan->keterangan }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ALASAN REJECT -->
+       @if($pengajuan->status == 'rejected' && $pengajuan->alasan_reject)
+
+        <div class="mt-3">
+
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-start gap-4">
+
+                <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-xl">
+                    ❌
+                </div>
+
+                <div>
+
+                    <p class="text-xs font-bold text-red-600 uppercase mb-1">
+                        Alasan Penolakan
+                    </p>
+
+                    <p class="text-sm text-red-700 leading-relaxed">
+                        {{ $pengajuan->alasan_reject }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @endif
 
         <!-- FOOT -->
         <div class="mt-8">

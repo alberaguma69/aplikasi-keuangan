@@ -29,6 +29,7 @@ class PengajuanController extends Controller
             'dibayarkan' => 'required',
             'keterangan' => 'required',
             'nominal' => 'required',
+            'uang_muka_awal' => 'nullable|numeric|min:0',
             'tanggal_pengajuan' => 'required',
             'berkas' => 'required|mimes:pdf,doc,docx|max:2048'
         ]);
@@ -47,6 +48,7 @@ class PengajuanController extends Controller
             'dibayarkan' => $request->dibayarkan,
             'keterangan' => $request->keterangan,
             'nominal' => $request->nominal,
+            'uang_muka_awal' => $request->uang_muka_awal,
             'tanggal_pengajuan' => $request->tanggal_pengajuan,
             'berkas' => $filename,
             'status' => 'pending',

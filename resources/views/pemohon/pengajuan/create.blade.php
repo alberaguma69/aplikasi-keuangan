@@ -30,8 +30,9 @@
     <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
 
         <form action="/pengajuan/store"
-              method="POST"
-              enctype="multipart/form-data">
+            method="POST"
+            enctype="multipart/form-data"
+            x-data="{ kategori: '' }">
 
             @csrf
 
@@ -46,6 +47,7 @@
 
                     <select
                         name="kategori"
+                        x-model="kategori"
                         required
                         class="w-full border border-gray-300 rounded-2xl px-5 py-4 pr-10 appearance-none bg-white">
 
@@ -121,11 +123,36 @@
 
             </div>
 
+            <!-- UANG MUKA AWAL -->
+            <div
+                class="mb-6"
+                x-show="kategori === 'Deklarasi Uang Muka'"
+                x-transition>
+
+                <label class="block text-sm font-semibold text-gray-700 mb-3">
+                    Uang Muka Awal
+                </label>
+
+                <input
+                    type="number"
+                    name="uang_muka_awal"
+                    class="w-full border border-gray-200 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+
+            </div>
+
             <!-- NOMINAL -->
             <div class="mb-6">
 
                 <label class="block text-sm font-semibold text-gray-700 mb-3">
-                    Nominal Biaya
+
+                    <span x-show="kategori !== 'Deklarasi Uang Muka'">
+                        Nominal Biaya
+                    </span>
+
+                    <span x-show="kategori === 'Deklarasi Uang Muka'">
+                        Nominal Uang Muka
+                    </span>
+
                 </label>
 
                 <input
