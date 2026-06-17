@@ -206,11 +206,11 @@
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                        Jurnal Lama
+                        Berkas Transaksi
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                        Jurnal Baru
+                        Jurnal Voucher
                     </th>
 
                 </tr>
