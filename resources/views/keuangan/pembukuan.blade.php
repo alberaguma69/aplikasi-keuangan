@@ -389,7 +389,7 @@
                         <!-- JURNAL LAMA -->
                         <td class="px-6 py-4">
                             <a
-                                href="{{ asset('storage/'.$pengajuan->berkas) }}"
+                                href="{{ asset('berkas/'.$pengajuan->berkas) }}"
                                 target="_blank"
                                 class="inline-flex items-center px-3 py-2 bg-blue-100 text-blue-700 rounded-xl text-xs font-semibold">
 

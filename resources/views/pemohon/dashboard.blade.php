@@ -351,7 +351,7 @@
             </div>
 
             <!-- BUTTON -->
-            <a href="{{ asset('storage/'.$pengajuan->berkas) }}"
+            <a href="{{ asset('berkas/'.$pengajuan->berkas) }}"
                 target="_blank"
                 class="w-full flex items-center justify-center gap-2 border border-gray-300 px-4 py-3 text-sm rounded-xl hover:bg-gray-100 transition font-semibold">
 

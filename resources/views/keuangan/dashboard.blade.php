@@ -297,7 +297,7 @@
 
                 @endif
 
-                <a href="{{ asset('storage/'.$pengajuan->berkas) }}"
+                <a href="{{ asset('berkas/'.$pengajuan->berkas) }}"
                 target="_blank"
                 class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">
 
