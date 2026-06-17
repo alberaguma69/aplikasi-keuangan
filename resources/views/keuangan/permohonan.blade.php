@@ -382,7 +382,8 @@
                         Dokumen
                     </p>
 
-                    <a href="{{ asset('berkas/'.$pengajuan->berkas) }}"
+                    <a
+                    href="{{ asset('storage/berkas/'.$pengajuan->berkas) }}"
                     target="_blank"
                     class="inline-flex items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-2 rounded-xl transition">
 
