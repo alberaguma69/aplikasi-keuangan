@@ -58,7 +58,7 @@ class DashboardController extends Controller
 
         $pengajuans = $query
             ->latest()
-            ->paginate(7)
+            ->paginate(6)
             ->withQueryString();
 
         return view(
