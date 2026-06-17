@@ -262,32 +262,10 @@
 
                         </td>
 
-                        <!-- TANGGAL PENCAIRAN -->
-                        <td class="px-6 py-5">
+                        <!-- PEMOHON -->
+                        <td class="px-6 py-5 font-semibold text-gray-800">
 
-                            @if($pengajuan->jadwal_pencairan)
-
-                                <div class="text-sm font-medium text-gray-800">
-
-                                    {{ \Carbon\Carbon::parse($pengajuan->jadwal_pencairan)->format('d M Y') }}
-
-                                </div>
-
-                                <div class="text-xs text-gray-400">
-
-                                    {{ \Carbon\Carbon::parse($pengajuan->jadwal_pencairan)->format('H:i') }} WIB
-
-                                </div>
-
-                            @else
-
-                                <div class="text-sm text-gray-400">
-
-                                    Belum Dijadwalkan
-
-                                </div>
-
-                            @endif
+                            {{ $pengajuan->dibayarkan }}
 
                         </td>
 
@@ -325,10 +303,10 @@
 
                         </td>
 
-                        <!-- PEMOHON -->
+                        <!-- KETERANGAN -->
                         <td class="px-6 py-5 font-semibold text-gray-800">
 
-                            {{ $pengajuan->dibayarkan }}
+                            {{ $pengajuan->keterangan }}
 
                         </td>
 
@@ -345,6 +323,35 @@
                         <td class="px-6 py-5 font-bold text-gray-900">
 
                             RP {{ number_format($pengajuan->nominal,0,',','.') }}
+
+                        </td>
+
+                        <!-- TANGGAL PENCAIRAN -->
+                        <td class="px-6 py-5">
+
+                            @if($pengajuan->jadwal_pencairan)
+
+                                <div class="text-sm font-medium text-gray-800">
+
+                                    {{ \Carbon\Carbon::parse($pengajuan->jadwal_pencairan)->format('d M Y') }}
+
+                                </div>
+
+                                <div class="text-xs text-gray-400">
+
+                                    {{ \Carbon\Carbon::parse($pengajuan->jadwal_pencairan)->format('H:i') }} WIB
+
+                                </div>
+
+                            @else
+
+                                <div class="text-sm text-gray-400">
+
+                                    Belum Dijadwalkan
+
+                                </div>
+
+                            @endif
 
                         </td>
 

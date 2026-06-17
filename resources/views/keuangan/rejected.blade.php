@@ -265,6 +265,13 @@
 
                         </td>
 
+                        <!-- DIBAYARKAN -->
+                        <td class="px-6 py-4">
+
+                            {{ $pengajuan->dibayarkan }}
+
+                        </td>
+
                         <!-- KATEGORI -->
                         <td class="px-6 py-5">
 
@@ -299,10 +306,10 @@
 
                         </td>
 
-                        <!-- DIBAYARKAN -->
+                        <!-- KETERANGAN -->
                         <td class="px-6 py-4">
 
-                            {{ $pengajuan->dibayarkan }}
+                            {{ $pengajuan->keterangan }}
 
                         </td>
 
@@ -322,15 +329,10 @@
 
                         </td>
 
+                        <!-- TANGGAL PENGAJUAN -->
                         <td class="px-6 py-4">
 
-                            {{ \Carbon\Carbon::parse($pengajuan->jadwal_pencairan)->format('d M Y H:i') }}
-
-                        </td>
-
-                        <td class="px-6 py-4">
-
-                            {{ $pengajuan->keterangan }}
+                            {{ \Carbon\Carbon::parse($pengajuan->tanggal_pengajuan)->format('d M Y H:i') }}
 
                         </td>
 
