@@ -31,7 +31,7 @@ class PengajuanController extends Controller
             'nominal' => 'required',
             'uang_muka_awal' => 'nullable|numeric|min:0',
             'tanggal_pengajuan' => 'required',
-            'berkas' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
+            'berkas' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
         ]);
 
         // UPLOAD FILE
@@ -90,7 +90,7 @@ class PengajuanController extends Controller
     public function update(Request $request, $id)
     {
     $request->validate([
-    'berkas' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
+    'berkas' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
     ]);
 
 

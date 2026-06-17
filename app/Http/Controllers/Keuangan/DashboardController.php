@@ -322,7 +322,7 @@ class DashboardController extends Controller
     public function uploadJurnal(Request $request, $id)
     {
         $request->validate([
-            'dokumen_jurnal_baru' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
+            'dokumen_jurnal_baru' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
         ]);
 
         $pengajuan = Pengajuan::findOrFail($id);
