@@ -150,7 +150,7 @@
                     </span>
 
                     <span x-show="kategori === 'Deklarasi Uang Muka'">
-                        Nominal Uang Muka
+                        Nominal Deklarasi Uang Muka
                     </span>
 
                 </label>
