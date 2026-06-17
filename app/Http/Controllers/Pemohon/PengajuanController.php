@@ -89,37 +89,45 @@ class PengajuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'berkas' => 'required|mimes:pdf,doc,docx|max:2048'
+    $request->validate([
+    'berkas' => 'required|mimes:pdf,doc,docx|max:2048'
+    ]);
+
+
+    $pengajuan = Pengajuan::findOrFail($id);
+
+    // UPLOAD FILE BARU
+    $file = $request->file('berkas');
+
+    $filename = time() . '.' . $file->getClientOriginalExtension();
+
+    $file->storeAs(
+        'berkas',
+        $filename,
+        'public'
+    );
+
+    // UPDATE
+    $pengajuan->update([
+        'berkas' => $filename,
+        'status' => 'pending'
+    ]);
+
+    $keuanganUsers = User::where('role', 'keuangan')->get();
+
+    foreach ($keuanganUsers as $user) {
+
+        Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Dokumen Diperbarui',
+            'message' => auth()->user()->name . ' memperbarui dokumen pengajuan',
         ]);
-
-        $pengajuan = Pengajuan::findOrFail($id);
-
-        // UPLOAD FILE BARU
-        $file = $request->file('berkas');
-
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-
-        $file->move(public_path('berkas'), $filename);
-
-        // UPDATE
-        $pengajuan->update([
-            'berkas' => $filename,
-            'status' => 'pending'
-        ]);
-
-        $keuanganUsers = User::where('role', 'keuangan')->get();
-
-        foreach ($keuanganUsers as $user) {
-
-            Notification::create([
-                'user_id' => $user->id,
-                'title' => 'Dokumen Diperbarui',
-                'message' => auth()->user()->name . ' memperbarui dokumen pengajuan',
-            ]);
-        }
-
-        return redirect('/dashboard')
-            ->with('success', 'Dokumen berhasil diperbarui');
     }
+
+    return redirect('/dashboard')
+        ->with('success', 'Dokumen berhasil diperbarui');
+
+
+    }
+
 }
