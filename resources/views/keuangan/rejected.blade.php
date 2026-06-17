@@ -200,11 +200,15 @@
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                        Pemohon
+                    </th>
+
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
                         Kategori
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                        Pemohon
+                        Keterangan
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
@@ -217,10 +221,6 @@
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
                         Tanggal Pengajuan
-                    </th>
-
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                        Keterangan
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
