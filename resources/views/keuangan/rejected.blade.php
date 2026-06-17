@@ -340,7 +340,7 @@
                             @if($pengajuan->berkas)
 
                                 <a
-                                    href="{{ asset('berkas/' . $pengajuan->berkas) }}"
+                                    href="{{ asset('storage/'.$pengajuan->berkas) }}"
                                     target="_blank"
                                     class="bg-blue-100 text-blue-600 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-200 transition">
 

@@ -39,7 +39,11 @@ class PengajuanController extends Controller
 
         $filename = time() . '.' . $file->getClientOriginalExtension();
 
-        $file->move(public_path('berkas'), $filename);
+        $path = $file->storeAs(
+            'berkas',
+            $filename,
+            'public'
+        );
 
         // SIMPAN KE DATABASE
         $pengajuan = Pengajuan::create([
