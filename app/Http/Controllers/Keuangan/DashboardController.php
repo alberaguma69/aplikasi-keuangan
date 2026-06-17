@@ -8,6 +8,7 @@ use App\Models\Pengajuan;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -332,29 +333,29 @@ class DashboardController extends Controller
 
             $namaFile = time() . '_' . $file->getClientOriginalName();
 
-            $file->move(
-                public_path('jurnal'),
-                $namaFile
+            $path = $file->storeAs(
+                'jurnal',
+                $namaFile,
+                'public'
             );
 
-            // SIMPAN KE DATABASE
             $pengajuan->update([
                 'status' => 'done',
                 'nomor_jurnal' => $request->nomor_jurnal,
-                'dokumen_jurnal_baru' => $namaFile,
+                'dokumen_jurnal_baru' => $path,
             ]);
-    }
+        }
 
-    $keuanganUsers = User::where('role', 'keuangan')->get();
+        $keuanganUsers = User::where('role', 'keuangan')->get();
 
-    foreach ($keuanganUsers as $user) {
+        foreach ($keuanganUsers as $user) {
 
-        Notification::create([
-            'user_id' => $user->id,
-            'title' => 'Jurnal Diupload',
-            'message' => 'Dokumen jurnal untuk FL' . str_pad($pengajuan->id, 4, '0', STR_PAD_LEFT) . ' telah diupload',
-        ]);
-    }
+            Notification::create([
+                'user_id' => $user->id,
+                'title' => 'Jurnal Diupload',
+                'message' => 'Dokumen jurnal untuk FL' . str_pad($pengajuan->id, 4, '0', STR_PAD_LEFT) . ' telah diupload',
+            ]);
+        }
 
         return back()->with(
             'success',
