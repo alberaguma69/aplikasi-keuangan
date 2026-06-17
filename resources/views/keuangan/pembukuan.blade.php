@@ -409,7 +409,7 @@
                             @if($pengajuan->dokumen_jurnal_baru)
 
                                 <a
-                                    href="{{ asset('jurnal/' . $pengajuan->dokumen_jurnal_baru) }}"
+                                    href="{{ asset('storage/jurnal/'.$pengajuan->dokumen_jurnal_baru) }}"
                                     target="_blank"
                                     class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-xs font-bold">
 
@@ -497,7 +497,7 @@
                                                         </div>
 
                                                         <h3 class="font-bold text-gray-800">
-                                                            Upload File PDF
+                                                            Upload File
                                                         </h3>
 
                                                         <p class="text-xs text-gray-400 mt-1">
@@ -517,7 +517,7 @@
                                                         <input
                                                             type="file"
                                                             name="dokumen_jurnal_baru"
-                                                            accept=".pdf"
+                                                            accept=".pdf, .doc, .docx, .jpeg, .jpg, .png"
                                                             class="hidden"
                                                             @change="fileName = $event.target.files[0]?.name">
 

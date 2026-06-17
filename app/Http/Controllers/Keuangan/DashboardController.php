@@ -322,7 +322,7 @@ class DashboardController extends Controller
     public function uploadJurnal(Request $request, $id)
     {
         $request->validate([
-            'dokumen_jurnal_baru' => 'required|mimes:pdf|max:2048'
+            'dokumen_jurnal_baru' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
         ]);
 
         $pengajuan = Pengajuan::findOrFail($id);
@@ -333,7 +333,7 @@ class DashboardController extends Controller
 
             $namaFile = time() . '_' . $file->getClientOriginalName();
 
-            $path = $file->storeAs(
+            $file->storeAs(
                 'jurnal',
                 $namaFile,
                 'public'
@@ -342,7 +342,7 @@ class DashboardController extends Controller
             $pengajuan->update([
                 'status' => 'done',
                 'nomor_jurnal' => $request->nomor_jurnal,
-                'dokumen_jurnal_baru' => $path,
+                'dokumen_jurnal_baru' => $namaFile,
             ]);
         }
 

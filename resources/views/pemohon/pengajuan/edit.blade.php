@@ -121,7 +121,7 @@
                         </p>
 
                         <p class="text-xs text-gray-400 mt-2">
-                            PDF atau Word (.pdf, .doc, .docx)
+                            PDF atau Word (.pdf, .doc, .docx, .jpg, .jpeg, .png)
                         </p>
 
                         <template x-if="fileName">
