@@ -220,7 +220,7 @@
                     <input
                         type="file"
                         name="berkas"
-                        accept=".pdf,.doc,.docx"
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                         class="hidden"
                         required
                         @change="fileName = $event.target.files[0].name">
