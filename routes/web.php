@@ -14,7 +14,7 @@ use App\Http\Controllers\Keuangan\DashboardController as KeuanganDashboard;
 */
 
 Route::get('/', [AuthController::class, 'login'])
-    ->name('login');
+    ->name('home');
 Route::get('/login', [AuthController::class, 'login'])
     ->name('login');
 
