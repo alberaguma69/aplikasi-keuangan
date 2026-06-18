@@ -351,12 +351,27 @@
             </div>
 
             <!-- BUTTON -->
-                        <a
-                href="{{ $pengajuan->status == 'done' && $pengajuan->dokumen_jurnal_baru
-                    ? asset('storage/jurnal/'.$pengajuan->dokumen_jurnal_baru)
-                    : asset('storage/berkas/'.$pengajuan->berkas) }}"
+            @php
+                $fileUrl = asset('storage/berkas/'.$pengajuan->berkas);
+
+                if (
+                    $pengajuan->status == 'done' &&
+                    $pengajuan->dokumen_jurnal_baru
+                ) {
+                    $fileUrl = asset('storage/jurnal/'.$pengajuan->dokumen_jurnal_baru);
+                }
+            @endphp
+
+            <a
+                href="{{ $fileUrl }}"
                 target="_blank"
-            >
+                class="w-full flex items-center justify-center gap-2 border border-gray-300 px-4 py-3 text-sm rounded-xl hover:bg-gray-100 transition font-semibold">
+
+                <span class="text-lg">📄</span>
+
+                LIHAT BERKAS
+
+            </a>
 
             @if($pengajuan->status == 'rejected')
 
