@@ -43,6 +43,14 @@ Route::middleware(['auth', 'role:pemohon'])->group(function () {
 
     Route::post('/pengajuan/update/{id}', [PengajuanController::class, 'update']);
 
+     // PROFILE PEMOHON
+    Route::get('/profile', [DashboardController::class, 'profile']);
+    Route::post('/profile/update', [DashboardController::class, 'updateProfile']);
+
+    // PASSWORD PEMOHON
+    Route::get('/password', [DashboardController::class, 'password']);
+    Route::post('/password/update', [DashboardController::class, 'updatePassword']);
+
 });
 
 /*
