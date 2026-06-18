@@ -204,6 +204,10 @@
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                        Penerima
+                    </th>
+
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
                         Kategori
                     </th>
 
@@ -262,6 +266,13 @@
                         <td class="px-6 py-4">
 
                             FL{{ str_pad($pengajuan->id, 4, '0', STR_PAD_LEFT) }}
+
+                        </td>
+
+                        <!-- Pemohon -->
+                        <td class="px-6 py-4">
+
+                            {{ $pengajuan->user->name }}
 
                         </td>
 

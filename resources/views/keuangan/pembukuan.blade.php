@@ -186,6 +186,10 @@
                     </th>
 
                     <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                        Penerima
+                    </th>
+
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
                         Kategori
                     </th>
 
@@ -266,7 +270,14 @@
 
                         </td>
 
-                        <!-- PEMOHON -->
+                        <!-- Dibayarkan -->
+                        <td class="px-6 py-5 font-semibold text-gray-800">
+
+                            {{ $pengajuan->user->name }}
+
+                        </td>
+
+                        <!-- Dibayarkan -->
                         <td class="px-6 py-5 font-semibold text-gray-800">
 
                             {{ $pengajuan->dibayarkan }}

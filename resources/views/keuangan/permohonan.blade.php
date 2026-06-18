@@ -288,13 +288,38 @@
             </div>
 
             <!-- CONTENT -->
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
 
                 <!-- PEMOHON -->
                 <div>
 
                     <p class="text-xs font-bold text-gray-400 uppercase mb-3">
                         Pemohon
+                    </p>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg text-gray-900">
+                                {{ strtoupper( $pengajuan->user->name) }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <!-- PEMOHON -->
+                <div>
+
+                    <p class="text-xs font-bold text-gray-400 uppercase mb-3">
+                        Dibayarkan kepada
                     </p>
 
                     <div class="flex items-center gap-4">
@@ -340,6 +365,7 @@
 
                 </div>
 
+                <!-- NOMINAL + DOKUMEN -->
                 <!-- NOMINAL -->
                 <div>
 
@@ -375,7 +401,7 @@
 
                 </div>
 
-                <!-- BERKAS -->
+                <!-- DOKUMEN -->
                 <div>
 
                     <p class="text-[11px] font-semibold text-gray-400 uppercase mb-2 tracking-wide">
@@ -383,19 +409,19 @@
                     </p>
 
                     <a
-                    href="{{ asset('storage/berkas/'.$pengajuan->berkas) }}"
-                    target="_blank"
-                    class="inline-flex items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-2 rounded-xl transition">
+                        href="{{ asset('storage/berkas/'.$pengajuan->berkas) }}"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-2 rounded-xl transition">
 
-                        <span class="text-sm">
-                            📎
-                        </span>
+                        <span class="text-sm">📎</span>
 
                         <span class="text-xs font-semibold text-gray-700">
                             Lihat Berkas
                         </span>
 
                     </a>
+
+                </div>
 
                 </div>
 

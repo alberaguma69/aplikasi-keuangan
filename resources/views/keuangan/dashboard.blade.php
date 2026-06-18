@@ -187,6 +187,27 @@
 
             </div>
 
+            <!-- PEMOHON -->
+            <div class="flex items-center gap-3 w-52 shrink-0">
+
+                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    👤
+                </div>
+
+                <div>
+
+                    <p class="text-[10px] text-gray-400 uppercase font-semibold">
+                        Pemohon
+                    </p>
+
+                    <h3 class="font-bold text-lg text-gray-900">
+                        {{ $pengajuan->user->name }}
+                    </h3>
+
+                </div>
+
+            </div>
+
             <!-- DIBAYARKAN -->
             <div class="flex items-center gap-3 w-52 shrink-0">
 

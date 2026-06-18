@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Pengajuan extends Model
 {
@@ -22,6 +23,11 @@ class Pengajuan extends Model
             'status',
             'alasan_reject',
         ];
+
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
 
 }
 
