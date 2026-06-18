@@ -107,12 +107,6 @@ Route::middleware(['auth', 'role:keuangan'])->group(function () {
     Route::delete('/pemohon/notification/{id}', [DashboardController::class, 'deleteNotification']);
     Route::delete('/pemohon/notifications/delete-all', [DashboardController::class, 'deleteAllNotifications']);
 
-    Route::get('/profile', [DashboardController::class, 'profile']);
-    Route::post('/profile/update', [DashboardController::class, 'updateProfile']);
-
-    Route::get('/password', [DashboardController::class, 'password']);
-    Route::post('/password/update', [DashboardController::class, 'updatePassword']);
-
     Route::get('/keuangan/rejected', [KeuanganDashboard::class, 'rejected']);
     Route::post('/keuangan/rejected/restore/{id}', [KeuanganDashboard::class, 'restore']);
     Route::delete('/keuangan/rejected/delete/{id}', [KeuanganDashboard::class, 'destroyRejected']);
