@@ -51,6 +51,9 @@ Route::middleware(['auth', 'role:pemohon'])->group(function () {
     Route::get('/password', [DashboardController::class, 'password']);
     Route::post('/password/update', [DashboardController::class, 'updatePassword']);
 
+    Route::delete('/pemohon/notification/{id}', [DashboardController::class, 'deleteNotification']);
+    Route::delete('/pemohon/notifications/delete-all', [DashboardController::class, 'deleteAllNotifications']);
+
 });
 
 /*
@@ -103,9 +106,6 @@ Route::middleware(['auth', 'role:keuangan'])->group(function () {
 
     Route::delete('/notification/{id}', [KeuanganDashboard::class, 'deleteNotification']);
     Route::delete('/notifications/delete-all', [KeuanganDashboard::class, 'deleteAllNotifications']);
-
-    Route::delete('/pemohon/notification/{id}', [DashboardController::class, 'deleteNotification']);
-    Route::delete('/pemohon/notifications/delete-all', [DashboardController::class, 'deleteAllNotifications']);
 
     Route::get('/keuangan/rejected', [KeuanganDashboard::class, 'rejected']);
     Route::post('/keuangan/rejected/restore/{id}', [KeuanganDashboard::class, 'restore']);
