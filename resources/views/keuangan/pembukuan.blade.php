@@ -271,14 +271,14 @@
                         </td>
 
                         <!-- Dibayarkan -->
-                        <td class="px-6 py-5 font-semibold text-gray-800">
+                        <td class="px-6 py-5 font-semibold text-gray-800 whitespace-nowrap">
 
                             {{ $pengajuan->user->name }}
 
                         </td>
 
                         <!-- Dibayarkan -->
-                        <td class="px-6 py-5 font-semibold text-gray-800">
+                        <td class="px-6 py-5 font-semibold text-gray-800 whitespace-nowrap">
 
                             {{ $pengajuan->dibayarkan }}
 
@@ -326,7 +326,7 @@
                         </td>
 
                         <!-- UANG MUKA -->
-                        <td class="px-6 py-5 font-bold text-gray-900">
+                        <td class="px-6 py-5 font-bold text-gray-900 whitespace-nowrap">
 
                             @if($pengajuan->kategori == 'Deklarasi Uang Muka')
                                 Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
@@ -337,14 +337,14 @@
                         </td>
 
                         <!-- NOMINAL -->
-                        <td class="px-6 py-5 font-bold text-gray-900">
+                        <td class="px-6 py-5 font-bold text-gray-900 whitespace-nowrap">
 
                             RP {{ number_format($pengajuan->nominal,0,',','.') }}
 
                         </td>
 
                         <!-- TANGGAL PENCAIRAN -->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             @if($pengajuan->jadwal_pencairan)
 
@@ -373,7 +373,7 @@
                         </td>
 
                         <!-- STATUS -->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             @if($pengajuan->status == 'pending')
 
@@ -404,7 +404,7 @@
                         </td>
 
                         <!-- JURNAL LAMA -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             <a
                                 href="{{ asset('storage/berkas/'.$pengajuan->berkas) }}"
                                 target="_blank"
@@ -416,7 +416,7 @@
                         </td>
 
                         <!-- JURNAL BARU-->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             {{-- JIKA SUDAH ADA FILE JURNAL --}}
                             @if($pengajuan->dokumen_jurnal_baru)
