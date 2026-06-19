@@ -195,43 +195,43 @@
 
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         ID
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Pemohon
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Penerima
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Kategori
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-center min-w-[350px]">
                         Keterangan
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase w-[35%] min-w-[150px]">
                         Uang Muka Awal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase w-[35%] min-w-[150px]">
                         Nominal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Tanggal Pengajuan
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Dokumen Jurnal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-center min-w-[350px]">
                         Alasan Ditolak
                     </th>
 
@@ -270,21 +270,21 @@
                         </td>
 
                         <!-- Pemohon -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5 font-semibold text-gray-800 whitespace-nowrap">
 
                             {{ $pengajuan->user->name }}
 
                         </td>
 
                         <!-- DIBAYARKAN -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5 font-semibold text-gray-800 whitespace-nowrap">
 
                             {{ $pengajuan->dibayarkan }}
 
                         </td>
 
                         <!-- KATEGORI -->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 text-center whitespace-nowrap">
 
                             @if($pengajuan->kategori == 'Reimburse/Claim')
 
@@ -318,37 +318,39 @@
                         </td>
 
                         <!-- KETERANGAN -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5 font-semibold text-gray-800 min-w-[350px]">
 
                             {{ $pengajuan->keterangan }}
 
                         </td>
 
                         <!-- UANG MUKA -->
-                        <td>
-                        @if($pengajuan->kategori == 'Deklarasi Uang Muka')
-                            Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
-                        @else
-                            -
-                        @endif
+                        <td class="px-6 py-5 font-bold text-gray-900 whitespace-nowrap">
+
+                            @if($pengajuan->kategori == 'Deklarasi Uang Muka')
+                                Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                            @else
+                                -
+                            @endif
+
                         </td>
 
                         <!-- NOMINAL -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5 font-bold text-gray-900 whitespace-nowrap">
 
                             Rp {{ number_format($pengajuan->nominal, 0, ',', '.') }}
 
                         </td>
 
                         <!-- TANGGAL PENGAJUAN -->
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             {{ \Carbon\Carbon::parse($pengajuan->tanggal_pengajuan)->format('d M Y H:i') }}
 
                         </td>
 
                         <!-- JURNAL LAMA -->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             @if($pengajuan->berkas)
 
@@ -375,7 +377,7 @@
                         </td>
 
                         <!-- ALASAN REJECT -->
-                        <td class="px-6 py-4 text-red-500">
+                        <td class="px-6 py-5 font-semibold text-red-500 min-w-[350px]">
 
                             {{ $pengajuan->alasan_reject ?? '-' }}
 
@@ -386,7 +388,7 @@
                 @empty
 
                 <tr>
-                    <td colspan="9">
+                    <td colspan="12">
                         <div class="flex justify-center items-center py-16 text-gray-400">
                             Tidak ada data rejected
                         </div>

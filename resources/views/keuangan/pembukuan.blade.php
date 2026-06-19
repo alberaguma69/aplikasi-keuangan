@@ -177,47 +177,47 @@
 
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         ID / Jurnal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Pemohon
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Penerima
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Kategori
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase min-w-[350px]">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase min-w-[350px]">
                         Keterangan
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase w-[35%] min-w-[150px]">
                         Uang Muka Awal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase w-[35%] min-w-[150px]">
                         Nominal
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Tanggal Pencairan
                     </th>                 
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Status
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Berkas Transaksi
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
                         Jurnal Voucher
                     </th>
 
@@ -270,7 +270,7 @@
 
                         </td>
 
-                        <!-- Dibayarkan -->
+                        <!-- Pemohon -->
                         <td class="px-6 py-5 font-semibold text-gray-800 whitespace-nowrap">
 
                             {{ $pengajuan->user->name }}
@@ -285,7 +285,7 @@
                         </td>
 
                         <!-- KATEGORI -->
-                        <td class="px-6 py-5 whitespace-nowrap">
+                        <td class="px-6 py-5 text-center whitespace-nowrap">
 
                             @if($pengajuan->kategori == 'Reimburse/Claim')
 
@@ -373,7 +373,7 @@
                         </td>
 
                         <!-- STATUS -->
-                        <td class="px-6 py-5 whitespace-nowrap">
+                        <td class="px-6 py-5 text-center whitespace-nowrap">
 
                             @if($pengajuan->status == 'pending')
 
@@ -587,7 +587,7 @@
                 @empty
 
                 <tr>
-                    <td colspan="9">
+                    <td colspan="12">
                         <div class="flex flex-col items-center justify-center py-20">
 
                             <div class="text-5xl mb-4">
