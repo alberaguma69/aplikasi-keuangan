@@ -193,7 +193,7 @@
                         Kategori
                     </th>
 
-                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase min-w-[350px]">
                         Keterangan
                     </th>
 
@@ -319,7 +319,7 @@
                         </td>
 
                         <!-- KETERANGAN -->
-                        <td class="px-6 py-5 font-semibold text-gray-800">
+                        <td class="px-6 py-5 font-semibold text-gray-800 min-w-[350px]">
 
                             {{ $pengajuan->keterangan }}
 
