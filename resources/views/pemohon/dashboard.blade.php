@@ -110,7 +110,7 @@
         <div class="bg-white rounded-3xl p-5 hover:shadow-lg transition">
 
             <!-- TOP -->
-            <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
 
                 <div>
 
@@ -208,7 +208,7 @@
                         Nominal Realisasi
                     </p>
 
-                    <p class="text-xl font-bold text-indigo-700 mt-1">
+                    <p class="text-lg md:text-xl font-bold text-indigo-700 mt-1 break-words">
                         Rp {{ number_format($pengajuan->nominal,0,',','.') }}
                     </p>
 
@@ -252,7 +252,7 @@
                         Dibayarkan Kepada
                     </p>
 
-                    <p class="font-semibold text-gray-800">
+                    <p class="font-semibold text-gray-800 break-words">
                         {{ $pengajuan->dibayarkan }}
                     </p>
 
@@ -277,7 +277,7 @@
                         Keterangan
                     </p>
 
-                    <p class="text-sm text-gray-700 leading-relaxed">
+                    <p class="text-sm text-gray-700 leading-relaxed break-words">
                         {{ $pengajuan->keterangan }}
                     </p>
 
@@ -320,7 +320,7 @@
         <div class="mt-8">
 
             <!-- JADWAL -->
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
 
                 <!-- LEFT -->
                 <div class="flex items-center gap-2">
