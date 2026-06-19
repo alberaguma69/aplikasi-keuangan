@@ -381,7 +381,7 @@
 
                             @elseif($pengajuan->status == 'approve_and_process')
 
-                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">
+                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold whitespace-nowrap">
                                     APPROVE & PROCESS
                                 </span>
 
