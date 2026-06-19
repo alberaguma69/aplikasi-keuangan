@@ -138,10 +138,10 @@
 
     <div class="bg-white rounded-3xl border border-gray-200 p-6 hover:shadow-lg transition">
 
-        <div class="flex items-center justify-between gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-6">
 
             <!-- INFO -->
-            <div class="w-44 shrink-0">
+            <div>
 
                 <div class="flex flex-wrap items-center gap-2 mb-3">
 
@@ -188,7 +188,7 @@
             </div>
 
             <!-- PEMOHON -->
-            <div class="flex items-center gap-3 w-52 shrink-0">
+            <div class="flex items-center gap-3 min-w-0">
 
                 <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
                     👤
@@ -200,7 +200,7 @@
                         Pemohon
                     </p>
 
-                    <h3 class="font-bold text-lg text-gray-900">
+                    <h3 class="font-semibold text-sm md:text-base text-gray-900 break-words">
                         {{ $pengajuan->user->name }}
                     </h3>
 
@@ -209,7 +209,7 @@
             </div>
 
             <!-- DIBAYARKAN -->
-            <div class="flex items-center gap-3 w-52 shrink-0">
+            <div class="flex items-center gap-3 min-w-0">
 
                 <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
                     👤
@@ -221,7 +221,7 @@
                         Dibayarkan Kepada
                     </p>
 
-                    <h3 class="font-bold text-lg text-gray-900">
+                    <h3 class="font-semibold text-sm md:text-base text-gray-900 break-words">
                         {{ $pengajuan->dibayarkan }}
                     </h3>
 
@@ -236,7 +236,7 @@
                     Keterangan
                 </p>
 
-                <p class="text-base text-gray-700">
+                <p class="text-sm text-gray-700 break-words">
                     {{ $pengajuan->keterangan }}
                 </p>
 
@@ -255,7 +255,7 @@
                                 Uang Muka Awal
                             </p>
 
-                            <p class="text-sm font-bold text-gray-800">
+                            <p class="text-lg md:text-xl font-bold text-indigo-600 break-words">
                                 Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
                             </p>
 
@@ -290,7 +290,7 @@
             </div>
 
             <!-- STATUS -->
-            <div class="w-36 flex flex-col gap-5">
+            <div class="flex flex-col gap-3">
 
                 @if($pengajuan->status == 'done')
 
