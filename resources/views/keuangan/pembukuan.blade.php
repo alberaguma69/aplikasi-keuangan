@@ -285,7 +285,7 @@
                         </td>
 
                         <!-- KATEGORI -->
-                        <td class="px-6 py-5">
+                        <td class="px-6 py-5 whitespace-nowrap">
 
                             @if($pengajuan->kategori == 'Reimburse/Claim')
 
@@ -326,12 +326,14 @@
                         </td>
 
                         <!-- UANG MUKA -->
-                        <td>
-                        @if($pengajuan->kategori == 'Deklarasi Uang Muka')
-                            Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
-                        @else
-                            -
-                        @endif
+                        <td class="px-6 py-5 font-bold text-gray-900">
+
+                            @if($pengajuan->kategori == 'Deklarasi Uang Muka')
+                                Rp {{ number_format($pengajuan->uang_muka_awal,0,',','.') }}
+                            @else
+                                -
+                            @endif
+
                         </td>
 
                         <!-- NOMINAL -->
